@@ -16,8 +16,8 @@ class App extends Component {
 
   //Create a function called getRandomQuote that returns a random quote from the array of quotes. Hint: You'll need to generate a random number between 0 and the length of the array
   getRandomQuote() {
-     const randomQuoteIndex = Math.floor(Math.random() * quotes.length)
-     return quotes[randomQuoteIndex];
+    const randomQuoteIndex = Math.floor(Math.random() * quotes.length)
+    return quotes[randomQuoteIndex];
   }
 
   //Function that will be called when the new quote button on the QuoteBox component is pressed
@@ -31,14 +31,25 @@ class App extends Component {
     });
   }
 
+  //Function to gernerate a random color from R: 0-154, G:0-154, B 0-154;
+  getRandomColor(upperBound) {
+    const color = `rgb(
+      ${Math.floor(Math.random() * upperBound)},
+      ${Math.floor(Math.random() * upperBound)},
+      ${Math.floor(Math.random() * upperBound)}
+    )`;
+    return color;
+  }
+
   render() {
 
     return (
       <div>
-        <QuoteBox 
-        quote={this.state.quote}
-        author={this.state.author}
-        handleClick={this.handleClick}
+        <QuoteBox
+          color={this.getRandomColor(155)}
+          quote={this.state.quote}
+          author={this.state.author}
+          handleClick={this.handleClick}
         />
       </div>
     );
